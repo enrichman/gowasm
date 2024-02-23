@@ -8,6 +8,14 @@ import (
 )
 
 func main() {
+	indexFile, err := os.Create("dist/index.html")
+	if err != nil {
+		panic(err)
+	}
+
 	index := view.Index()
-	index.Render(context.Background(), os.Stdout)
+	err = index.Render(context.Background(), indexFile)
+	if err != nil {
+		panic(err)
+	}
 }
