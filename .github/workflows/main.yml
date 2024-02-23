@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-go@v5
 
       - name: Install tailwindcss
-        run: npm install tailwindcss
+        run: npm install -g tailwindcss
 
       - name: Clean
         run: make clean
