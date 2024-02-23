@@ -18,7 +18,10 @@ jobs:
 
       - name: Install tailwindcss
         run: npm install tailwindcss
-      
+
+      - name: Clean
+        run: make clean
+
       - name: Build CSS
         run: make css
 
