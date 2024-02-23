@@ -23,9 +23,10 @@ templ head() {
 
 templ Body(input, output string) {
 	<body>
-		<div class="container mx-auto">
+		<div class="container mx-auto m-10">
 			<form>
 				<label for="name">What's your name?</label>
+				<br/>
 				<input name="name" />
 				<br/>
 
@@ -34,15 +35,15 @@ templ Body(input, output string) {
 				</button>
 			</form>
 
-			@HelloResult("")
+			@HelloResult("", true)
 		</div>
     </body>
 }
 
-templ HelloResult(name string) {
-	if name != "" {
-		<p id="result">Hi { name }!</p>
+templ HelloResult(name string, hide bool) {
+	if hide {
+		<p id="result" class="hidden"></p>
 	} else {
-		<p id="result" class="hidden" />
+		<p id="result">Hi my bears { name }!</p>
 	}
 }

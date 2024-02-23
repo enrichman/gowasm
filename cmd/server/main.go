@@ -17,7 +17,7 @@ func main() {
 	fileServer := http.FileServer(http.Dir(`dist`))
 
 	fmt.Println("listening on http://localhost:" + port)
-	err := http.ListenAndServe(`:`+port, fileServer)
+	err := http.ListenAndServe(`localhost:`+port, fileServer)
 	if err != nil {
 		log.Fatal(err)
 	}
