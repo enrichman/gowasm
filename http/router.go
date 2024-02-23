@@ -1,9 +1,9 @@
 package http
 
 import (
-	"fmt"
 	"net/http"
 
+	"github.com/enrichman/gowasm/view"
 	"github.com/gorilla/mux"
 )
 
@@ -15,6 +15,8 @@ func Router() *mux.Router {
 
 func helloHandler(res http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
-	in := req.Form["input"][0]
-	fmt.Fprintf(res, `<p id="result">%s (hello changed %s)</p>`, in, req.URL.Path)
+	name := req.Form["name"][0]
+
+	component := view.HelloResult(name)
+	component.Render(req.Context(), res)
 }
