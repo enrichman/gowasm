@@ -16,14 +16,16 @@ jobs:
       - uses: actions/setup-node@v4
       - uses: actions/setup-go@v5
 
-      - name: Install tailwindcss
-        run: npm install -g tailwindcss
+      - name: Install tailwindcss and deps
+        run: |
+          npm install -g tailwindcss
+          npm install @tailwindcss/forms
 
       - name: Clean
         run: make clean
 
       - name: Build CSS
-        run: tailwindcss -i ./src/input.css -o ./dist/output.css
+        run: make css
 
       - name: Build
         run: make
