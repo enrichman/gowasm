@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+      - uses: actions/setup-go@v5
+
+      - name: Install tailwindcss
+        run: npm install tailwindcss
+      
+      - name: Build CSS
+        run: make css
+
+      - name: Build
+        run: make
