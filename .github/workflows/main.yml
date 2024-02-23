@@ -23,7 +23,7 @@ jobs:
         run: make clean
 
       - name: Build CSS
-        run: make css
+        run: tailwindcss -i ./src/input.css -o ./dist/output.css
 
       - name: Build
         run: make
