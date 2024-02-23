@@ -11,6 +11,7 @@
 gowasm
 launch.json
 dist
+tmp
 
 # Test binary, built with `go test -c`
 *.test

@@ -1,7 +1,7 @@
 
 build:
 	rm -rf dist || true
-	mkdir -p dist/js dist/css
+	mkdir dist
 	templ generate
 	cp assets/* dist
 	go run cmd/generate/main.go
