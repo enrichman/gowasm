@@ -8,13 +8,15 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func Router(logger log.Logger) *mux.Router {
-	r := mux.NewRouter()
-	r.HandleFunc("/hello", helloHandler(logger))
-	return r
+func Router(logger log.Logger, r *mux.Router) {
+	if r == nil {
+		r = mux.NewRouter()
+	}
+
+	r.HandleFunc("/hello", HelloHandler(logger))
 }
 
-func helloHandler(logger log.Logger) http.HandlerFunc {
+func HelloHandler(logger log.Logger) http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
 		logger.Log("helloHandler")
 

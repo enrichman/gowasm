@@ -16,3 +16,6 @@ css:
 clean:
 	rm -rf dist || true
 	mkdir dist
+
+serve:
+	docker run --rm -p8082:80 -it -v $(shell pwd)/dist:/usr/share/nginx/html nginx

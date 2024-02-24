@@ -5,12 +5,14 @@ package main
 import (
 	"github.com/enrichman/gowasm/http"
 	"github.com/enrichman/gowasm/internal/log"
+	"github.com/gorilla/mux"
 	wasmhttp "github.com/nlepage/go-wasm-http-server"
 )
 
 func main() {
 	logger := log.NewJSLogger()
-	router := http.Router(logger)
+	router := mux.NewRouter()
+	http.Router(logger, router)
 	wasmhttp.Serve(router)
 
 	select {}
