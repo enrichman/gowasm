@@ -3,7 +3,7 @@ package view
 templ Index(swEnabled bool) {
 	<html>
 		@head(swEnabled)
-		@Body("", "")
+		@Body()
 	</html>
 }
 
@@ -16,39 +16,45 @@ templ head(swEnabled bool) {
 			integrity="sha384-xcuj3WpfgjlKF+FXhSQFQ0ZNr39ln+hwjN3npfM9VBnUskLolQAcN80McRIVOPuO"
 			crossorigin="anonymous"></script>
         
-		@serviceWorker(swEnabled)
+		if swEnabled {
+			<script>navigator.serviceWorker.register('sw.js')</script>
+		}
 	</head>
 }
 
-templ Body(input, output string) {
+templ Body() {
 	<body class="bg-gray-100">
-		<div class="container mx-auto m-10">
-			<form>
-				<label for="name">What's your name?</label>
-				<br/>
-				<input id="name" name="name" />
-				<br/>
+		<div class="w-full max-w-xs container mx-auto m-10">
 
-				<button hx-post="api/hello" hx-target="#result" hx-swap="outerHTML">
-					Say hello!
-				</button>
+			<form
+				hx-post="api/hello" hx-target="#hi-btn" hx-swap="outerHTML"
+				class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+				<div class="mb-4">
+					<label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+						Hello world!
+					</label>
+					<input
+						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						id="name" name="name" type="text" placeholder="What's your name?" />
+				</div>
+
+				<div class="flex items-center justify-between">
+					@HiButton("")
+				</div>
 			</form>
 
-			@HelloResult("", true)
-		</div>
+			<p class="text-center text-gray-500 text-xs">
+				&copy;2020 Acme Corp. All rights reserved.
+			</p>
+		</div>		
     </body>
 }
 
-templ HelloResult(name string, hide bool) {
-	if hide {
-		<p id="result" class="hidden"></p>
-	} else {
-		<p id="result">Hi my bears { name }!</p>
-	}
-}
-
-templ serviceWorker(enabled bool) {
-	if enabled {
-		<script>navigator.serviceWorker.register('sw.js')</script>
-	}
+templ HiButton(name string) {
+	<button
+		id="hi-btn"
+		class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+		Hi {name}!
+	</button>
 }

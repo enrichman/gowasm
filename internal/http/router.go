@@ -27,7 +27,7 @@ func HelloHandler(logger log.Logger) http.HandlerFunc {
 		name := req.Form["name"][0]
 		logger.Log("helloHandler name: " + name)
 
-		component := view.HelloResult(name, false)
+		component := view.HiButton(name)
 		err = component.Render(req.Context(), res)
 		if err != nil {
 			logger.Error(err, "component.Render")
