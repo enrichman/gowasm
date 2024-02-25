@@ -11,7 +11,7 @@ templ:
 	templ generate
 
 templ-watch:
-	templ generate --watch
+	templ generate --watch -proxy http://localhost:8085/
 
 css:
 	tailwindcss -i ./static/css/input.css -o ./dist/css/output.css --minify

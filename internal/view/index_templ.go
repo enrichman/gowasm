@@ -91,7 +91,7 @@ func Body(input, output string) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<body class=\"bg-blue-600\"><div class=\"container mx-auto m-10\"><form><label for=\"name\">What's your name?</label><br><input id=\"name\" name=\"name\"><br><button hx-post=\"api/hello\" hx-target=\"#result\" hx-swap=\"outerHTML\">Say hello!</button></form>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<body class=\"bg-gray-100\"><div class=\"container mx-auto m-10\"><form><label for=\"name\">What's your name?</label><br><input id=\"name\" name=\"name\"><br><button hx-post=\"api/hello\" hx-target=\"#result\" hx-swap=\"outerHTML\">Say hello!</button></form>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
