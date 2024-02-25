@@ -4,7 +4,7 @@ import (
 	"context"
 	"os"
 
-	"github.com/enrichman/gowasm/view"
+	"github.com/enrichman/gowasm/internal/view"
 )
 
 func main() {
@@ -13,7 +13,7 @@ func main() {
 		panic(err)
 	}
 
-	index := view.Index()
+	index := view.Index(true)
 	err = index.Render(context.Background(), indexFile)
 	if err != nil {
 		panic(err)

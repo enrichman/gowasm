@@ -3,7 +3,7 @@
 package main
 
 import (
-	"github.com/enrichman/gowasm/http"
+	"github.com/enrichman/gowasm/internal/http"
 	"github.com/enrichman/gowasm/internal/log"
 	"github.com/gorilla/mux"
 	wasmhttp "github.com/nlepage/go-wasm-http-server"

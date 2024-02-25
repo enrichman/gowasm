@@ -1,17 +1,23 @@
 
-build:
+build: templ css
+	cp static/sw.js dist/sw.js
 	go run cmd/generate/main.go
-	cp assets/* dist
 	GOOS=js GOARCH=wasm go build -o dist/server.wasm cmd/server/main_js_wasm.go
 
 run:
-	go run cmd/server/main.go
+	air
 
 templ:
 	templ generate
 
+templ-watch:
+	templ generate --watch
+
 css:
-	tailwindcss -i ./src/input.css -o ./dist/output.css
+	tailwindcss -i ./static/css/input.css -o ./dist/css/output.css --minify
+
+css-watch:
+	tailwindcss -i ./static/css/input.css -o ./dist/css/output.css --watch
 
 clean:
 	rm -rf dist || true

@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/enrichman/gowasm/internal/log"
-	"github.com/enrichman/gowasm/view"
+	"github.com/enrichman/gowasm/internal/view"
 	"github.com/gorilla/mux"
 )
 

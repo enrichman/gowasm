@@ -34,9 +34,6 @@ jobs:
       - name: Clean
         run: make clean
 
-      - name: Build CSS
-        run: make css
-
       - name: Build
         run: make
 

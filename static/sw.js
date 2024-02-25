@@ -11,5 +11,5 @@ if( 'function' === typeof importScripts) {
 		event.waitUntil(clients.claim())
 	})
 
-	registerWasmHTTPListener('./server.wasm', { base: 'api' })
+	registerWasmHTTPListener('server.wasm', { base: 'api' })
 }

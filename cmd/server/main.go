@@ -7,8 +7,10 @@ import (
 	"net/http"
 	"os"
 
-	gowasmhttp "github.com/enrichman/gowasm/http"
+	"github.com/a-h/templ"
+	gowasmhttp "github.com/enrichman/gowasm/internal/http"
 	"github.com/enrichman/gowasm/internal/log"
+	"github.com/enrichman/gowasm/internal/view"
 	"github.com/gorilla/mux"
 )
 
@@ -25,8 +27,11 @@ func main() {
 	apiRouter := r.PathPrefix("/api/").Subrouter()
 	gowasmhttp.Router(logger, apiRouter)
 
-	fileServer := http.FileServer(http.Dir(`dist`))
-	r.PathPrefix("/").Handler(fileServer)
+	r.Handle("/", templ.Handler(view.Index(false)))
+
+	staticCSSFileServer := http.FileServer(http.Dir(`dist/css`))
+	cssHandler := http.StripPrefix("/css/", staticCSSFileServer)
+	r.PathPrefix("/css/").Handler(cssHandler)
 
 	fmt.Println("listening on http://localhost:" + port)
 	err := http.ListenAndServe(`localhost:`+port, r)
