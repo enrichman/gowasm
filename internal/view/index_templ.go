@@ -101,7 +101,7 @@ func Body() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></form><p class=\"text-center text-gray-500 text-xs\">&copy;2020 Acme Corp. All rights reserved.</p></div></body>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></form><p class=\"text-center text-gray-500 text-xs\">&copy;2024 Enrico Candino. All rights reserved.\t\t\t\t</p><p class=\"text-center text-gray-500 text-xs\">Build with ❤️</p></div></body>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -132,7 +132,7 @@ func HiButton(name string) templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/view/index.templ`, Line: 57, Col: 10}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/view/index.templ`, Line: 60, Col: 10}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {

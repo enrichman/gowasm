@@ -1,11 +1,16 @@
 package http
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/enrichman/gowasm/internal/log"
 	"github.com/enrichman/gowasm/internal/view"
 	"github.com/gorilla/mux"
+)
+
+var (
+	Version = "0.0.0-dev"
 )
 
 func Router(logger log.Logger, r *mux.Router) {
@@ -14,6 +19,7 @@ func Router(logger log.Logger, r *mux.Router) {
 	}
 
 	r.HandleFunc("/hello", HelloHandler(logger))
+	r.HandleFunc("/version", VersionHandler(logger))
 }
 
 func HelloHandler(logger log.Logger) http.HandlerFunc {
@@ -32,5 +38,12 @@ func HelloHandler(logger log.Logger) http.HandlerFunc {
 		if err != nil {
 			logger.Error(err, "component.Render")
 		}
+	}
+}
+
+func VersionHandler(logger log.Logger) http.HandlerFunc {
+	return func(res http.ResponseWriter, req *http.Request) {
+		logger.Log("VersionHandler")
+		fmt.Fprint(res, Version)
 	}
 }

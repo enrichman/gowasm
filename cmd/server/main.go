@@ -34,6 +34,7 @@ func main() {
 	r.PathPrefix("/css/").Handler(cssHandler)
 
 	fmt.Println("listening on http://localhost:" + port)
+	fmt.Println(gowasmhttp.Version)
 	err := http.ListenAndServe(`localhost:`+port, r)
 	if err != nil {
 		logger.Error(err, "")
