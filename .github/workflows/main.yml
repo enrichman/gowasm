@@ -26,10 +26,11 @@ jobs:
         with:
           go-version: '1.22'
 
-      - name: Install tailwindcss and deps
+      - name: Install dependencies
         run: |
           npm install -g tailwindcss
           npm install @tailwindcss/forms
+          go install github.com/a-h/templ/cmd/templ@latest
 
       - name: Clean
         run: make clean
