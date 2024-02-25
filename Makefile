@@ -25,3 +25,6 @@ clean:
 
 serve:
 	docker run --rm -p8082:80 -it -v $(shell pwd)/dist:/usr/share/nginx/html nginx
+
+dev:
+	make -j 3 css-watch templ-watch run
