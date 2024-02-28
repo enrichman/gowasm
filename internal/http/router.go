@@ -24,26 +24,26 @@ func Router(logger log.Logger, r *mux.Router) {
 
 func HelloHandler(logger log.Logger) http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
-		logger.Log("helloHandler")
+		logger.Info("helloHandler")
 
 		err := req.ParseForm()
 		if err != nil {
-			logger.Error(err, "req.ParseForm")
+			logger.Error("req.ParseForm", "error", err.Error())
 		}
 		name := req.Form["name"][0]
-		logger.Log("helloHandler name: " + name)
+		logger.Info("helloHandler name: " + name)
 
 		component := view.HiButton(name)
 		err = component.Render(req.Context(), res)
 		if err != nil {
-			logger.Error(err, "component.Render")
+			logger.Error("component.Render", "error", err.Error())
 		}
 	}
 }
 
 func VersionHandler(logger log.Logger) http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
-		logger.Log("VersionHandler")
+		logger.Info("VersionHandler")
 		fmt.Fprint(res, Version)
 	}
 }

@@ -37,6 +37,6 @@ func main() {
 	fmt.Println(gowasmhttp.Version)
 	err := http.ListenAndServe(`localhost:`+port, r)
 	if err != nil {
-		logger.Error(err, "")
+		logger.Error(err.Error())
 	}
 }

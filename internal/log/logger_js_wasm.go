@@ -12,10 +12,10 @@ func NewJSLogger() *JSLogger {
 	}
 }
 
-func (l *JSLogger) Log(msg string) {
-	l.console.Call("log", msg)
+func (l *JSLogger) Info(msg string, args ...any) {
+	l.console.Call("log", append([]any{msg}, args...))
 }
 
-func (l *JSLogger) Error(err error, msg string) {
-	l.console.Call("error", msg, err.Error())
+func (l *JSLogger) Error(msg string, args ...any) {
+	l.console.Call("error", append([]any{msg}, args...))
 }
